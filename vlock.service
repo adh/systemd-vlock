@@ -1,0 +1,15 @@
+# place this file into /etc/systemd/system/
+
+[Unit]
+Description=User suspend actions
+Before=sleep.target
+
+[Service]
+User=root
+#Type=forking
+ExecStart=/usr/local/bin/vtlock.sh
+ExecStartPost=/bin/sleep 1
+
+[Install]
+WantedBy=sleep.target
+
